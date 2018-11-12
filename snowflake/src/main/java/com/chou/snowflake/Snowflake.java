@@ -32,7 +32,7 @@ public class Snowflake {
         this.machineId = machineId;
     }
 
-    public long nextId() {
+    public synchronized long nextId() {
         long currentTimeStamp = getCurrentTimeStamp();
         if (currentTimeStamp < lastTimeStamp) {
             throw new RuntimeException("时钟同步出现错误，无法获取序列号！");
